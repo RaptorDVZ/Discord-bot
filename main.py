@@ -27,11 +27,17 @@ async def on_message(message):
   
   
   if msg.startswith('>hi'):
-    await message.channel.send("Hi there "+mention)
+    embedVar = discord.Embed(title="HELLO THERE", description=mention, color=0x00ff00)
+    #embedVar.add_field(name="Field1", value="hi", inline=False)
+    #embedVar.add_field(name="Field2", value="hi2", inline=False)
+    await message.channel.send(embed=embedVar)
 
   if any(word in msg.lower() for word in bad_words):
     await message.channel.purge(limit=1)
-    await message.channel.send(response + mention)
+    embedVar = discord.Embed(title="WARNING:You cannot send this message here!", description=mention, color=0x00ff00)
+    #embedVar.add_field(name="Field1", value="hi", inline=False)
+    #embedVar.add_field(name="Field2", value="hi2", inline=False)
+    await message.channel.send(embed=embedVar)
   await client.process_commands(message)
 
 @client.command()

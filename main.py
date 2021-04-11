@@ -50,7 +50,7 @@ async def hi(ctx):
 @client.command()
 @commands.has_permissions(manage_messages=True)
 async def warn(ctx,member,message):
-  embed = discord.Embed(title="WARNING!!", description=member, color=0x00ff00)
+  embed = discord.Embed(title="You have been WARNED!!", description=member, color=0x00ff00)
   
   embed.add_field(name="Reason:", value=message, inline = False)
   #embedVar.add_field(name="Reason", value="hi2", inline=False)

@@ -3,16 +3,23 @@ import os
 import random
 from alive import alive
 from discord.ext import commands
+import wikipedia
+from discord.ext.commands import Bot
 
 client= commands.Bot(command_prefix = '>')
+client.remove_command('help')
 
-bad_words=['fuck','bhosadike','madarchod','gandu','chutiye','jhaatu','jhatu','chut','loda','lauda','lawda','motherfucker','asshole','shithole','cunt','lode','lawde','lund','behenchod','banchod','benchod','benchoda','chod','chuda','ass','dick','chud']
+bad_words=['fuck','bhosadike','madarchod','gandu','chutiye','jhaatu','jhatu','chut','loda','lauda','lawda','motherfucker','asshole','shithole','cunt','lode','lawde','lund','behenchod','banchod','benchod','benchoda','chod','chuda','ass','dick','chud','gaand','gand','jhaat','jhaant','jhat','fucker','cock','jhantu','gaandu','bitch']
 
 response='WARNING :You cannot use this word here '
 
 @client.event
 async def on_ready():
-  print('Raptor Dada is ready to be used')
+  print('DogeBhai is ready to be used')
+
+def wiki_summary(arg):
+  definition = wikipedia.summary(arg ,sentences=3 ,chars=1000,auto_suggest=True, redirect=True)
+  return definition
 
   
 
@@ -35,6 +42,8 @@ async def on_message(message):
     await message.channel.send(embed=embedVar)
   await client.process_commands(message)
 
+
+
 @client.command()
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx,amount=5):
@@ -56,6 +65,20 @@ async def warn(ctx,member,message):
   #embedVar.add_field(name="Reason", value="hi2", inline=False)
   await ctx.channel.purge(limit=1)
   await ctx.channel.send(embed=embed)
+
+@client.command()
+async def wiki(ctx,descr):
+  embed = discord.Embed(title="Result", description=wiki_summary(descr), color=0x00ff00)
+  await ctx.channel.send(content=None,embed=embed)
+
+@client.command()
+async def help(ctx):
+  embedVar = discord.Embed(title="Command", description='Commands Description', color=0x00ff00)
+  embedVar.add_field(name=">hi", value="Get a greeting message", inline=True)
+  embedVar.add_field(name=">wiki", value="search summary in wikipedia", inline=True)
+  embedVar.add_field(name=">clear", value="clears 5 messages until specified (for mods)", inline=True)
+  await ctx.channel.send(embed=embedVar)
+
 
 
 

@@ -9,7 +9,7 @@ The main functions that this bot can perform are:
   4. warn members (without database storage)
   5. help command for more detail
  
- File is hosted in replit
+ Files are hosted on replit
  
  The token value is saved in an .env file that is present on replit (for security).
  

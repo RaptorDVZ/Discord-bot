@@ -9,7 +9,7 @@ from discord.ext.commands import Bot
 client= commands.Bot(command_prefix = '>')
 client.remove_command('help')
 
-bad_words=['fuck','bhosadike','madarchod','gandu','chutiye','jhaatu','jhatu','chut','loda','lauda','lawda','motherfucker','asshole','shithole','cunt','lode','lawde','lund','behenchod','banchod','benchod','benchoda','chod','chuda','ass','dick','chud','gaand','gand','jhaat','jhaant','jhat','fucker','cock','jhantu','gaandu','bitch']
+
 
 response='WARNING :You cannot use this word here '
 
